@@ -1,0 +1,45 @@
+version: '3'
+services:
+  app:
+    container_name: merchant-reporting
+    build: .
+    ports: 
+      - 8000:8000 
+    restart: on-failure
+    volumes:
+      - merchant_reporting_logs:/logs
+    depends_on:
+      - majoo-mysql          
+    networks:
+      - fullstack
+    environment:
+      - DB_DRIVER=mysql
+      - DB_NAME=majoo
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - DB_HOST=majoo-mysql
+      - DB_PORT=3306
+
+
+  majoo-mysql:
+    build: ./database/dump
+    container_name: majoo-mysql
+    ports: 
+      - 3306:3306
+    environment: 
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=cake_store
+    volumes:
+      - database_mysql:/var/lib/mysql
+    networks:
+      - fullstack
+
+
+volumes:
+  merchant_reporting_logs:
+  database_mysql:                  
+
+# Networks to be created to facilitate communication between containers
+networks:
+  fullstack:
+    driver: bridge
