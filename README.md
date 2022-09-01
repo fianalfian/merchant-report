@@ -1,4 +1,4 @@
-# Cake Store RESTful API
+# Merchant Reporting RESTful API
 
 ## Package
 The project uses the following Go packages:
@@ -7,94 +7,12 @@ The project uses the following Go packages:
 * Database access: [database/sql](https://pkg.go.dev/database/sql")
 * Database migration: [golang-migrate](https://github.com/golang-migrate/migrate)
 * Data validation: [go-playground/validator](https://github.com/go-playground/validator)
-* Log: [zap](https://github.com/uber-go/zap)
 
 ## Project Layout
 
-Cake Store RESTful API uses the following project layout:
+Merchant Reporting RESTful API uses the following project layout:
  
 ```
-.
-# Cake Store RESTful API
-
-## Package
-The project uses the following Go packages:
-
-* Routing: [echo](https://echo.labstack.com/)
-* Database access: [database/sql](https://pkg.go.dev/database/sql")
-* Database migration: [golang-migrate](https://github.com/golang-migrate/migrate)
-* Data validation: [go-playground/validator](https://github.com/go-playground/validator)
-* Log: [zap](https://github.com/uber-go/zap)
-
-## Project Layout
-
-Cake Store RESTful API uses the following project layout:
- 
-```
-.
-├── Dockerfile
-├── README.md
-├── config
-│   └── db
-│       └── db.go
-├── controller
-│   ├── auth
-│   │   └── auth.go
-│   └── transaction
-│       └── transaction.go
-├── database
-│   ├── dump
-│   │   ├── Dockerfile
-│   │   └── initdb.sql
-│   ├── migrations
-│   │   ├── 202208311928_create_table_merchants.down.sql
-│   │   ├── 202208311928_create_table_merchants.up.sql
-│   │   ├── 202208311957_create_table_users.down.sql
-│   │   ├── 202208311957_create_table_users.up.sql
-│   │   ├── 202208311959_create_table_outlets.down.sql
-│   │   ├── 202208311959_create_table_outlets.up.sql
-│   │   ├── 202208312000_create_table_transactions.down.sql
-│   │   └── 202208312000_create_table_transactions.up.sql
-│   └── seeds
-│       ├── merchants_seeder.sql
-│       ├── outlets_seeder.sql
-│       ├── transactions_seeder.sql
-│       └── users_seeder.sql
-├── docker-compose.yml
-├── docs
-│   └── Merchant Reporting API.postman_collection.json
-├── go.mod
-├── go.sum
-├── makefile
-├── model
-│   ├── auth.go
-│   ├── jwt.go
-│   ├── transaction.go
-│   └── web_response.go
-├── schema
-│   ├── merchant.go
-│   ├── outlet.go
-│   ├── transaction.go
-│   └── user.go
-├── server.go
-├── service
-│   ├── auth
-│   │   └── auth.go
-│   ├── merchant
-│   │   └── merchant.go
-│   ├── outlet
-│   │   └── outlet.go
-│   └── transaction
-│       └── transaction.go
-└── utils
-    ├── jwt.go
-    └── validation.go
-
-18 directories, 39 files
-alfian@Alfian-AD:~/merchant-report$ ^C
-alfian@Alfian-AD:~/merchant-report$ ^C
-alfian@Alfian-AD:~/merchant-report$ ^C
-alfian@Alfian-AD:~/merchant-report$ tree
 .
 ├── config
 │   └── db
@@ -106,7 +24,7 @@ alfian@Alfian-AD:~/merchant-report$ tree
 │   ├── migrations
 │   └── seeds
 ├── docs
-│   └── Merchant Reporting API.postman_collection.json
+│   └── postman_collection.json
 ├── model
 ├── schema
 ├── service
@@ -135,13 +53,13 @@ git clone https://github.com/fianalfian/merchant-report.git
 
 cd merchant-report
 
-# start a cake-store and MySQL database server in a Docker container
+# start a merchant-reporting and MySQL database server in a Docker container
 make deploy
 
 # Usually you should run this command each time after you pull new code from the code repo. 
 make migrate
 
-# seed the database with some cake test data
+# seed the database with some test data
 make majoo-seed
 
 ```
